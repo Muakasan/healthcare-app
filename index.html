@@ -112,7 +112,7 @@
         navigator.geolocation.getCurrentPosition(function(position){
             console.log(position);
             $.ajax({
-                url: "localhost:5000",
+                url: "http://127.0.0.1:5000/",
                 type: "POST",
                 data:JSON.stringify({
                     "lat": position.coords.latitude,
