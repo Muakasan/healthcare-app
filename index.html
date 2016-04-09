@@ -15,6 +15,17 @@
         <nav></nav>
     </header>
     <main>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Okay</a>
+            </div>
+        </div>
+
         <div class="section">
             <div class="container">
                 <h1 class="header center">Healthcare App</h1>
@@ -23,7 +34,7 @@
                 </div>
                 <br>
                 <br>
-                <h3>Your Current Location: <strong id="location">Washington DC</strong></h3>
+                <h3>Your State: <strong id="location">Washington DC</strong></h3>
             <h4>Alerts in Your Area</h4> 
             <div class="row">
                 <div id="alerts-div"class="col s12 m12">
@@ -36,6 +47,7 @@
                 </div>            
             </div>
             </div>
+      
         </div>
 
         <br>
@@ -102,6 +114,8 @@
             console.log(position);
             console.log("2");
         });
+        $('#modal1').openModal();
+
     </script>
 </body>
 </html>
