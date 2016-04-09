@@ -110,9 +110,19 @@
         getLocation();
         */
         navigator.geolocation.getCurrentPosition(function(position){
-            console.log("1");
             console.log(position);
-            console.log("2");
+            $.ajax({
+                url: "localhost:5000",
+                type: "POST",
+                data:JSON.stringify({
+                    "lat": position.coords.latitude
+                    "long": position.coords.longitude
+                })
+            }).done(function( data ) {
+                if ( console && console.log ) {
+                    console.log( "Sample of data:", data.slice( 0, 100 ) );
+                }
+            });
         });
         $('#modal1').openModal();
 
