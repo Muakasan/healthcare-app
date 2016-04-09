@@ -4,7 +4,7 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}"  media="screen,projection"/>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -85,7 +85,7 @@
     </footer>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
     <script>
         /*
         var x = document.getElementById("location");
@@ -111,17 +111,18 @@
         */
         navigator.geolocation.getCurrentPosition(function(position){
             console.log(position);
+            console.log(position.coords.latitude)
             $.ajax({
-                url: "http://127.0.0.1:5000/",
+                url: "http://127.0.0.1:5000/locate",
                 type: "POST",
                 data:JSON.stringify({
                     "lat": position.coords.latitude,
                     "long": position.coords.longitude
-                })
+                }),
+                contentType: 'application/json;charset=UTF-8'
+
             }).done(function( data ) {
-                if ( console && console.log ) {
-                    console.log( "Sample of data:", data.slice( 0, 100 ) );
-                }
+                console.log(data)
             });
         });
         $('#modal1').openModal();

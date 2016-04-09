@@ -1,11 +1,12 @@
-from flask import jsonify, Flask, render_template
+from flask import jsonify, Flask, render_template, request
 
 app = Flask(__name__)
 
 @app.route('/locate', methods=['POST'])
 def locate():
-    print(request.json['lat'])
-    return jsonify({'title':request.json['lat'],'content': request.json['long']})
+    print("lat: " + str(request.json['lat']))
+    print("long: " + str(request.json['long']))
+    return jsonify({'title': request.json['lat'],'content': request.json['long']})
 
 @app.route('/', methods=['GET'])
 def index():
