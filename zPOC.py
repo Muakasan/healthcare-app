@@ -25,7 +25,7 @@ class StackOverflowSpider(scrapy.Spider):
         item = scrapy.Item()
         items = []
         divOB = response.xpath('.//div[@id="rss-outbreaksUS"]').extract()
-	for p in divOB:
+	      for p in divOB:
             liOB = p.xpath('//li').extract()
 
             for i in liOB:
